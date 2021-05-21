@@ -30,6 +30,10 @@ def thumbnails(event, context):
     if filename.endswith('-thumbnail'):
         return
 
+    # resized images
+    if '-' in filename:
+        return
+
     client = storage.Client()
     bucket = client.bucket(BUCKET_NAME)
     blob = bucket.get_blob(filename)
